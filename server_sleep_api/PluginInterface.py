@@ -1,4 +1,5 @@
 from abc import ABCMeta, abstractmethod
+from enum import Enum
 
 
 class AbstractCheckPlugin(object):
@@ -23,3 +24,10 @@ class AbstractCheckPlugin(object):
     @abstractmethod
     def wake(self):
         pass
+
+
+class CheckReturn(Enum):
+    SLEEP_READY = 1
+    DONT_SLEEP = 2
+    FORCE_SLEEP = 3
+    UNKNOWN = 9
