@@ -16,12 +16,17 @@ class AbstractCheckPlugin(ABC):
 
     """Perform tasks that should be done before the device is set to sleep"""
     @abstractmethod
-    def sleep(self):
+    def pre_sleep(self):
         pass
 
     """Perform tasks that should be done after wake up"""
     @abstractmethod
-    def wake(self):
+    def post_sleep(self):
+        pass
+
+    """Return a list of Configurable values for the Plugin"""
+    @abstractmethod
+    def configurables(self):
         pass
 
 
@@ -30,3 +35,12 @@ class CheckReturn(Enum):
     DONT_SLEEP = 2
     FORCE_SLEEP = 3
     UNKNOWN = 9
+
+
+class Configurable(object):
+
+    def ___init___(self, identifier, displayname, examplevalue, description):
+        self.identifier = identifier
+        self.displayname = displayname
+        self.examplevalue = examplevalue
+        self.description = description
